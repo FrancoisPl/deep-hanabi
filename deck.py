@@ -5,6 +5,7 @@ import config as cfg
 class Deck:
     def __init__(self):
         self.cards = self.init_deck()
+        self.remaining_cards = len(self.cards)
 
     def init_deck(self):
         cards = []
@@ -15,11 +16,10 @@ class Deck:
         random.shuffle(cards)
         return cards
         
-    def draw_card():
-        return
-    
-if __name__=='__main__':
-    deck = Deck()
-    import pdb
-    pdb.set_trace()
-    
+    def draw_card(self):
+        assert(self.remaining_cards > 0)
+        self.remaining_cards -= 1
+        return self.cards.pop()
+
+    def remaining_cards(self):
+        return self.remaining_cards
